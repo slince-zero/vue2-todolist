@@ -1,8 +1,15 @@
 import Vue from 'vue'
 import App from './App.vue'
+import store from './store'
 
-Vue.config.productionTip = false
+const app = new Vue({
+  store,
+  render: function (createElement) {
+    return createElement(App)
+  },
+})
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+app.$mount('#app')
+
+// 将Vue实例挂载到window上
+window.VueApp = app
